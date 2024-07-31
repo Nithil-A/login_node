@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const config = require("../config");
 // Postgress db
 const userModel = require("../models/userModel");
+// mongo db user schema
+const userSchema = require("../database/mongo/schemas/userSchema");
 
 const users = []; // In-memory user store
 // Render registration page
@@ -19,6 +21,10 @@ exports.register = async (req, res, next) => {
 
     // add data to db using postgress 
     // const user = await userModel.createUser(name, email, hashedPassword);
+
+    // Add data to mongo db
+    // const user = new userSchema({ name, email, password: hashedPassword });
+    // user.save();
 
     res.redirect('/auth/login');
   } catch (error) {
@@ -41,6 +47,9 @@ exports.login = async (req, res, next) => {
 
     // Find user data from postgress db
     // const user = await userModel.findUserByUsername(email);
+
+    // Find user data from mongo db
+    // const user = await userSchema.find({email : email});
 
     if (user && await bcrypt.compare(password, user.password)) {
       const token = jwt.sign({ email }, config.JWT_SECRET, { expiresIn: '1h' });
