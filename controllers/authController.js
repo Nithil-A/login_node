@@ -55,11 +55,13 @@ exports.logout = (req, res, next) => {
 };
 
 exports.renderUserDetails = (req, res) => {
-  res.render('index', { user: req.user });
+  let userData = users.find(item => item.email == req.user.email);
+  res.render('index', { user: userData });
 };
 
 exports.renderEditUser = (req, res) => {
-  res.render('register', { user: req.user });
+  let userData = users.find(item => item.email == req.user.email);
+  res.render('register', { user: userData });
 };
 
 exports.updateUser = async (req, res, next) => {

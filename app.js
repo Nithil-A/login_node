@@ -22,6 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Attaching the routes to app.
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 

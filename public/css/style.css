@@ -2,11 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     background-color: #f4f4f4;
   }
   
@@ -73,7 +68,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 100px 100px;
+  padding: 50px 100px;
   /* max-width: 400px; */
   margin: auto;
   background-color: #f9f9f9;
