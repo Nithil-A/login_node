@@ -3,7 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+
 const config = require("./config");
+// mongo db
+// const mongoDb = require("./database/mongo/connection/connection");
+// Postgress sql
+// const pool = require('./database/postgressSql/connection'); 
 
 // User defined routes 
 const indexRoutes = require('./routes/indexRoute');
@@ -50,4 +55,5 @@ process.on('uncaughtException', (err) => {
 // Server listen
 app.listen(config.PORT, () => {
     console.log(`Server is running on port http://localhost:${config.PORT}`);
+    // mongoDb();
 });

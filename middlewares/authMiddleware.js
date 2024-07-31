@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require("../config");
+// const userModel = require("../database/postgressSql/connection");
 // Authenticate user using cookie
 exports.authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
@@ -9,6 +10,8 @@ exports.authenticateToken = (req, res, next) => {
 
         return res.redirect('/auth/login');
       } else {
+        // Get data from postgress db.
+        // req.user = await userModel.findUserByUsername(decoded.email);
         req.user = decoded;
         next();
       }
@@ -17,3 +20,5 @@ exports.authenticateToken = (req, res, next) => {
     res.redirect('/auth/login');
   }
 };
+
+// module.exports = authenticateJWT;
