@@ -3,12 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Details</title>
+  <title>Home page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>User Details</h1>
-  <p>Username: <%= user?.name %></p>
-  <a href="/auth/edit">Edit</a>
-  <a href="/auth/logout">Logout</a>
+  <div class="container mt-5">
+    <div class="container-box d-flex justify-content-between">
+      <div class="box flex-item">
+        <h1>User Details</h1>
+        <p>Username: <%= user?.name %></p>
+        <a href="/auth/edit" class="btn btn-primary btn-animate">Edit</a>
+        <a href="/auth/logout" class="btn btn-danger btn-animate">Logout</a>
+      </div>
+      <div class="box flex-item">
+        <h1>User Services</h1>
+        <a href="/" class="btn btn-success btn-animate">Chat</a>
+        <a href="/" class="btn btn-secondary btn-animate">Other services</a>
+      </div>
+    </div>
+  </div>  
 </body>
 </html>

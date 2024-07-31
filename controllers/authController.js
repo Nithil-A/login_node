@@ -67,7 +67,7 @@ exports.renderEditUser = (req, res) => {
 exports.updateUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
-    const user = users.find(u => u.email === req.user.email);
+    const user = users.find(u => u.email == req.user.email);
 
     if (user) {
       user.name = name || user.name;
