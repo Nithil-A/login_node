@@ -70,8 +70,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 50px 100px;
   /* max-width: 400px; */
+  min-height: 500px;
   margin: auto;
   background-color: #f9f9f9;
+}
+
+.error-image {
+  max-height: 200px;
 }
 
 .btn-animate {

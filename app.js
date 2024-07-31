@@ -26,9 +26,25 @@ app.use(cookieParser());
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 
-// Error handling middleware
+// 404 Error handling middleware
+app.use((req, res, next) => {
+    const err = new Error('Page not found');
+    err.status = 404;
+    next(err);
+});
+
+// General error handling middleware
 app.use((err, req, res, next) => {
-    res.status(500).render('error', { message: 'Something went wrong. Please try again later.', errStack : err.stack });
+    const status = err.status || 500;
+    const message = status === 404 ? 'Page not found.' : 'Something went wrong. Please try again later.';
+    console.error(err.stack); // Log the error stack for debugging
+    res.status(status).render('error', { message, errStack: err.stack, status });
+});
+
+// Catch uncaught exceptions
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err); // Log the error
+    // Consider graceful shutdown here
 });
 
 // Server listen
