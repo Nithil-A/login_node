@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="container-box">
+      <h1 class="text-center"><%= user ? 'Edit User' : 'Register' %></h1>      
+      <div id="errorContainer" class="error-message"></div>
+      <form id="registerForm" action="<%= user ? '/auth/edit' : '/auth/register' %>" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" value="<%= user ? user.name : '' %>" required placeholder="Please enter your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" value="<%= user ? user.email : '' %>" required placeholder="Please enter your email address">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" required placeholder="Please enter your password">
+        </div>        
+        <button type="submit" class="btn btn-primary btn-animate"><%= user ? 'Update' : 'Register' %></button>
+      </form>
+    </div>
+    <div class="text-center mt-3">
+      <% if (!user) { %>
+        <p>Already have an account? <a href="/auth/login">Login here</a></p>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
